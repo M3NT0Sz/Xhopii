@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<?php
+require "./processamento/funcoesBD.php";
+$conexao = conectarBD();
+?>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,106 +43,32 @@
       <section class="gridBranco">
         <p>Produtos</p>
         <section class="grid">
-          <a href="./produto.php">
+
+        <?php
+        $produto = "SELECT * FROM produto ";
+        $comando = mysqli_query($conexao, $produto);
+        while ($row = mysqli_fetch_array($comando)) {
+          $nome = $row['nome'];
+          $fabricante = $row['fabricante'];
+          $imgP = base64_encode($row['imgP']);
+          
+          ?>
+
+          <a href="./home.php">
             <section class="imagemRoupas">
-              <img src="./img/produto1.png" />
-              <p>Camisa Desenvolvedor Front-End CSS</p>
-              <section class="baixo">
-                <p class="preco">R$ 59,90</p>
-                <p class="disponiveis">171 disponíveis</p>
-              </section>
+              <?php echo "<img class=perfil src=data:image/jpeg;base64,$imgP>"; ?>
+              <p><?php echo $nome . " " . $fabricante ?></p>
             </section>
           </a>
-          <a href="./produto.php">
-            <section class="imagemRoupas">
-              <img src="./img/produto1.png" />
-              <p>Camisa Desenvolvedor Front-End CSS</p>
-              <section class="baixo">
-                <p class="preco">R$ 59,90</p>
-                <p class="disponiveis">171 disponíveis</p>
-              </section>
-            </section>
-          </a>
-          <a href="./produto.php">
-            <section class="imagemRoupas">
-              <img src="./img/produto1.png" />
-              <p>Camisa Desenvolvedor Front-End CSS</p>
-              <section class="baixo">
-                <p class="preco">R$ 59,90</p>
-                <p class="disponiveis">171 disponíveis</p>
-              </section>
-            </section>
-          </a>
-          <a href="./produto.php">
-            <section class="imagemRoupas">
-              <img src="./img/produto1.png" />
-              <p>Camisa Desenvolvedor Front-End CSS</p>
-              <section class="baixo">
-                <p class="preco">R$ 59,90</p>
-                <p class="disponiveis">171 disponíveis</p>
-              </section>
-            </section>
-          </a>
-          <a href="./produto.php">
-            <section class="imagemRoupas">
-              <img src="./img/produto1.png" />
-              <p>Camisa Desenvolvedor Front-End CSS</p>
-              <section class="baixo">
-                <p class="preco">R$ 59,90</p>
-                <p class="disponiveis">171 disponíveis</p>
-              </section>
-            </section>
-          </a>
-          <a href="./produto.php">
-            <section class="imagemRoupas">
-              <img src="./img/produto1.png" />
-              <p>Camisa Desenvolvedor Front-End CSS</p>
-              <section class="baixo">
-                <p class="preco">R$ 59,90</p>
-                <p class="disponiveis">171 disponíveis</p>
-              </section>
-            </section>
-          </a>
-          <a href="./produto.php">
-            <section class="imagemRoupas">
-              <img src="./img/produto1.png" />
-              <p>Camisa Desenvolvedor Front-End CSS</p>
-              <section class="baixo">
-                <p class="preco">R$ 59,90</p>
-                <p class="disponiveis">171 disponíveis</p>
-              </section>
-            </section>
-          </a>
-          <a href="./produto.php">
-            <section class="imagemRoupas">
-              <img src="./img/produto1.png" />
-              <p>Camisa Desenvolvedor Front-End CSS</p>
-              <section class="baixo">
-                <p class="preco">R$ 59,90</p>
-                <p class="disponiveis">171 disponíveis</p>
-              </section>
-            </section>
-          </a>
-          <a href="./produto.php">
-            <section class="imagemRoupas">
-              <img src="./img/produto1.png" />
-              <p>Camisa Desenvolvedor Front-End CSS</p>
-              <section class="baixo">
-                <p class="preco">R$ 59,90</p>
-                <p class="disponiveis">171 disponíveis</p>
-              </section>
-            </section>
-          </a>
-          <a href="./produto.php">
-            <section class="imagemRoupas">
-              <img src="./img/produto1.png" />
-              <p>Camisa Desenvolvedor Front-End CSS</p>
-              <section class="baixo">
-                <p class="preco">R$ 59,90</p>
-                <p class="disponiveis">171 disponíveis</p>
-              </section>
-            </section>
-          </a>
+          
+          <?php
+
+          
+          
+        }
+        ?>    
+         
+          
         </section>
       </section>
     </section>

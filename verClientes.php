@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<?php
+require "./processamento/funcoesBD.php";
+$conexao = conectarBD();
+?>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,67 +43,31 @@
       <section class="gridBranco">
         <p>Clientes</p>
         <section class="grid">
+        <?php
+        $cliente = "SELECT * FROM cliente";
+        $comando = mysqli_query($conexao, $cliente);
+        while ($row = mysqli_fetch_array($comando)) {
+          $nome = $row['nome'];
+          $sobrenome = $row['sobrenome'];
+          $img = base64_encode($row['img']);
+          
+          ?>
+
           <a href="./home.php">
             <section class="imagemRoupas">
-              <img src="./img/Matheus.png" />
-              <p>Matheus Mendes Dos Santos</p>
+              <?php echo "<img class=perfil src=data:image/jpeg;base64,$img>"; ?>
+              <p><?php echo $nome . " " . $sobrenome ?></p>
             </section>
           </a>
-          <a href="./home.php">
-            <section class="imagemRoupas">
-              <img src="./img/Matheus.png" />
-              <p>Matheus Mendes Dos Santos</p>
-            </section>
-          </a>
-          <a href="./home.php">
-            <section class="imagemRoupas">
-              <img src="./img/Matheus.png" />
-              <p>Matheus Mendes Dos Santos</p>
-            </section>
-          </a>
-          <a href="./home.php">
-            <section class="imagemRoupas">
-              <img src="./img/Matheus.png" />
-              <p>Matheus Mendes Dos Santos</p>
-            </section>
-          </a>
-          <a href="./home.php">
-            <section class="imagemRoupas">
-              <img src="./img/Matheus.png" />
-              <p>Matheus Mendes Dos Santos</p>
-            </section>
-          </a>
-          <a href="./home.php">
-            <section class="imagemRoupas">
-              <img src="./img/Paulo.jpeg" />
-              <p>Paulo Diney Da Silva Martins</p>
-            </section>
-          </a>
-          <a href="./home.php">
-            <section class="imagemRoupas">
-              <img src="./img/Paulo.jpeg" />
-              <p>Paulo Diney Da Silva Martins</p>
-            </section>
-          </a>
-          <a href="./home.php">
-            <section class="imagemRoupas">
-              <img src="./img/Paulo.jpeg" />
-              <p>Paulo Diney Da Silva Martins</p>
-            </section>
-          </a>
-          <a href="./home.php">
-            <section class="imagemRoupas">
-              <img src="./img/Paulo.jpeg" />
-              <p>Paulo Diney Da Silva Martins</p>
-            </section>
-          </a>
-          <a href="./home.php">
-            <section class="imagemRoupas">
-              <img src="./img/Paulo.jpeg" />
-              <p>Paulo Diney Da Silva Martins</p>
-            </section>
-          </a>
-          </section>
+          
+          <?php
+
+          
+          
+        }
+        ?>        
+        
+        </section>
       </section>
     </section>
     <footer>
