@@ -29,11 +29,11 @@
           <a href="./home.php"><i class="bx bx-arrow-back"></i></a>
         </section>
         <section class="redef">
-          <section class="redefinir">
+          <form method="post" action="./processamento/processamento.php" class="redefinir">
             <p>Redefinir Senha</p>
-            <input type="email" placeholder="Email" />
+            <input type="email" name="inputEmail" placeholder="Email" />
             <button>Enviar</button>
-          </section>
+          </form>
         </section>
       </section>
     </section>

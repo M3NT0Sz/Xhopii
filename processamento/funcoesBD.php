@@ -44,6 +44,28 @@ function verificarFuncionarios($email, $senha)
     if (mysqli_num_rows($resultado) == 1) {
         $_SESSION['logado'] = "Sim";
     } else {
-        $_SESSION['cadastro'] = "Usuario não cadastrado";
+        $_SESSION['cadastro'] = "Funcionario não cadastrado";
     }
+}
+
+function verificarEmail($email){
+    $conexao = conectarBD();
+    $consulta = "SELECT * FROM funcionarios WHERE fu_email = '$email'";
+    $resultado = mysqli_query($conexao, $consulta);
+    if (mysqli_num_rows($resultado) == 1) {
+        $_SESSION['achou'] = "Sim";
+    } else {
+        $_SESSION['cadastro'] = "Funcionario não cadastrado";
+    }
+}
+
+function alterarSenha($senha){
+    $email = $_SESSION['email'];
+    unset($_SERVER['email']);
+    $conexao = conectarBD();
+    $consulta = "UPDATE funcionarios SET fu_senha = '$senha' WHERE fu_email = '$email'";
+
+    $_SESSION['cadastro'] = "Senha alterada com sucesso";
+
+    mysqli_query($conexao, $consulta);
 }

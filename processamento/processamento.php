@@ -90,3 +90,35 @@ if (isset($_SESSION['logado']) == "Sim") {
     header("Location: ../home.php");
     die();
 }
+
+if (
+    !empty($_POST['inputEmail'])
+) {
+    $email = $_POST['inputEmail'];
+
+    verificarEmail($email);
+
+    if (isset($_SESSION['achou']) == "Sim") {
+        header("Location: ../senha.php");
+        $_SESSION['email'] = $email;
+    } else {
+        header("Location: ../login.php");
+    }
+    die();
+}
+
+if (
+    !empty($_POST['inputSenha']) && !empty($_POST['inputSenhaDenovo'])
+) {
+    $senha = $_POST['inputSenha'];
+    $senhaDeNovo = $_POST['inputSenhaDenovo'];
+
+    if ($senha == $senhaDeNovo) {
+        alterarSenha($senha);
+        header("Location: ../login.php");
+    } else {
+        $_SESSION['senhaErrada'] = "Senha Errada";
+        header("Location: ../senha.php");
+    }
+    die();
+}
