@@ -93,7 +93,7 @@ $conexao = conectarBD();
         $imgP = base64_encode($row['imgP']);
         $quantidade = $row['quantidade'];
       ?>
-        <a href="./produto.php">
+        <a href="#">
           <section class="imagemRoupas">
             <?php echo "<img class=perfil src=data:image/jpeg;base64,$imgP>"; ?>
             <p><?php echo $nome ?></p>
