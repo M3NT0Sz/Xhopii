@@ -26,13 +26,13 @@ session_start();
       </section>
     </section>
     <?php
-    if (isset($_SESSION['login']) != "Logado") {
+    if (isset($_SESSION['logado']) != "Sim") {
     ?>
       <section class="sair"><a href="login.php">Entrar</a></section>
     <?php
-    } else if (isset($_SESSION['login']) == "Logado") {
+    } else {
     ?>
-      <section class="sair"><a href="login.php">Sair</a></section>
+      <section class="sair"><a href="./processamento/processamento.php">Sair</a></section>
     <?php
     }
     ?>

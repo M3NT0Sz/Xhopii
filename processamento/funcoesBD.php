@@ -25,11 +25,25 @@ function inserirFuncionario($cpf, $nome, $sobrenome, $dataNasc, $cargoFuncao, $s
     mysqli_query($conexao, $consulta);
 }
 
-function inserirProdutos($nome, $fabricante, $descricao, $valor, $quantidade, $imgP){
+function inserirProdutos($nome, $fabricante, $descricao, $valor, $quantidade, $imgP)
+{
     $conexao = conectarBD();
     $consulta = "INSERT INTO produto(nome, fabricante, descricao, valor, quantidade, imgP) VALUES ('$nome', '$fabricante', '$descricao', '$valor', '$quantidade', '$imgP')";
 
     $_SESSION['cadastro'] = "Produto Cadastrados com sucesso";
 
     mysqli_query($conexao, $consulta);
+}
+
+function verificarFuncionarios($email, $senha)
+{
+    $conexao = conectarBD();
+    $consulta = "SELECT * FROM funcionarios WHERE fu_email = '$email' and fu_senha = '$senha'";
+    $resultado = mysqli_query($conexao, $consulta);
+
+    if (mysqli_num_rows($resultado) == 1) {
+        $_SESSION['logado'] = "Sim";
+    } else {
+        $_SESSION['cadastro'] = "Usuario não cadastrado";
+    }
 }

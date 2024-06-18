@@ -30,11 +30,12 @@ if (
 }
 
 
-if (!empty($_POST['inputNome']) && !empty($_POST['inputSobrenome']) &&
-!empty($_POST['inputCPF']) && !empty($_POST['inputData']) && 
-!empty($_POST['inputTelefone']) && !empty($_POST['inputEmail']) &&
-!empty($_POST['inputSenha'])
-){
+if (
+    !empty($_POST['inputNome']) && !empty($_POST['inputSobrenome']) &&
+    !empty($_POST['inputCPF']) && !empty($_POST['inputData']) &&
+    !empty($_POST['inputTelefone']) && !empty($_POST['inputEmail']) &&
+    !empty($_POST['inputSenha'])
+) {
     $nome =  $_POST['inputNome'];
     $sobrenome = $_POST['inputSobrenome'];
     $cpf = $_POST['inputCPF'];
@@ -50,10 +51,11 @@ if (!empty($_POST['inputNome']) && !empty($_POST['inputSobrenome']) &&
     die();
 }
 
-if(!empty($_POST['nome']) && !empty($_POST['fabricante']) && 
- !empty($_POST['descricao']) && !empty($_POST['valor']) &&
- !empty($_POST['quantidade'])
- ){
+if (
+    !empty($_POST['nome']) && !empty($_POST['fabricante']) &&
+    !empty($_POST['descricao']) && !empty($_POST['valor']) &&
+    !empty($_POST['quantidade'])
+) {
     $nome = $_POST['nome'];
     $fabricante = $_POST['fabricante'];
     $descricao = $_POST['descricao'];
@@ -65,6 +67,26 @@ if(!empty($_POST['nome']) && !empty($_POST['fabricante']) &&
 
     header("Location: ../cadastroProduto.php");
     die();
- }
+}
 
+if (
+    !empty($_POST['inputEmail']) && !empty($_POST['inputSenha'])
+) {
+    $email = $_POST['inputEmail'];
+    $senha = $_POST['inputSenha'];
 
+    verificarFuncionarios($email, $senha);
+
+    if (isset($_SESSION['logado']) != "") {
+        header("Location: ../home.php");
+    } else {
+        header("Location: ../login.php");
+    }
+    die();
+}
+
+if (isset($_SESSION['logado']) == "Sim") {
+    session_destroy();
+    header("Location: ../home.php");
+    die();
+}

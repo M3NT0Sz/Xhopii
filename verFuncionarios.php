@@ -1,4 +1,5 @@
 <?php
+session_start();
 require "./processamento/funcoesBD.php";
 $conexao = conectarBD();
 ?>
@@ -24,7 +25,17 @@ $conexao = conectarBD();
         <h1>Xhopii</h1>
       </section>
     </section>
-    <section class="sair"><a href="login.php">Sair</a></section>
+    <?php
+    if (isset($_SESSION['logado']) != "Sim") {
+    ?>
+      <section class="sair"><a href="login.php">Entrar</a></section>
+    <?php
+    } else {
+    ?>
+      <section class="sair"><a href="./processamento/processamento.php">Sair</a></section>
+    <?php
+    }
+    ?>
   </header>
   <nav>
     <ul>
