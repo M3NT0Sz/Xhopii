@@ -98,8 +98,8 @@ $conexao = conectarBD();
             <?php echo "<img class=perfil src=data:image/jpeg;base64,$imgP>"; ?>
             <p><?php echo $nome ?></p>
             <section class="baixo">
-              <p class="preco"><?php echo $valor ?></p>
-              <p class="disponiveis"><?php $quantidade ?> disponíveis</p>
+              <p class="preco">R$ <?php echo $valor ?></p>
+              <p class="disponiveis"><?php echo $quantidade ?> disponíveis</p>
             </section>
           </section>
         </a>
